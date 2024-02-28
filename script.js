@@ -72,7 +72,7 @@ function leerIntento() {
         cantidadSuperada("<h1>Ingresaste menos o mas de 5 letras</h1>");
         return null; 
     }
-    if(intento.typeof !== 'string'){
+    if(intento.typeof !== 'string' && !isNaN(intento)){
         console.log("Inserta solo letras por favor");
         cantidadSuperada("<h1>Debe ingresar solo letras</h1>");
         return null; 
