@@ -46,6 +46,7 @@ function intentar() {
 
                 ROW.appendChild(SPAN);
             }
+            ROW.style.textAlign = "center";
             GRID.appendChild(ROW);
         }
 
