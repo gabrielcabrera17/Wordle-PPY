@@ -3,6 +3,7 @@ const GRID = document.getElementById("grid");
 const INPUT = document.getElementById("guess-input");
 let contenedor = document.getElementById("guesses");
 const RECARGAR = document.getElementById("reload");
+const INSTRUCCION = document.getElementById("Instruccion");
 let intentos = 0;
 
 
@@ -31,6 +32,7 @@ fetch('https://random-word-api.herokuapp.com/word?number=1&length=5&lang=es')
     
         function intentarSegundaOpcion() {
             if (intentos < 6) {
+                
                 const ROW = document.createElement('div');
                 ROW.className = 'row';
     
@@ -51,6 +53,7 @@ fetch('https://random-word-api.herokuapp.com/word?number=1&length=5&lang=es')
                 terminar("<h1> PERDISTE!</h1>");
             }
         }
+       
     
         button.addEventListener("click", intentarSegundaOpcion);
     }
@@ -89,6 +92,7 @@ fetch('https://random-word-api.herokuapp.com/word?number=1&length=5&lang=es')
 
 function intentar() {
     if (intentos < 6) {
+        
         const ROW = document.createElement('div');
         ROW.className = 'row';
 
@@ -131,6 +135,8 @@ function intentar() {
         console.log("Has alcanzado el límite de 5 intentos");
         terminar("<h1> PERDISTE!</h1>");
     }
+
+    
 }
 
 
@@ -159,7 +165,14 @@ function obtenerPosiciones(palabra, letra) {
 
 
 button.addEventListener("click", intentar);
+button.addEventListener("click", ocultarInstruccion);
 RECARGAR.addEventListener("click",reload);
+
+function ocultarInstruccion(){
+    INSTRUCCION.style.display = "none";
+}
+
+
 function reload(){
    location.reload();
 }
