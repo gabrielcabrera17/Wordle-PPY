@@ -17,102 +17,108 @@ fetch('https://random-word-api.herokuapp.com/word?number=1&length=5&lang=es')
     })
     .catch(handleError);
 
-function handleError(err) {
-    console.error(err);
-    console.log("La API no responde");
+    function obtenerPalabraSeleccionada(palabras) {
+        const INDICEALEATORIO = Math.round(Math.random() * (palabras.length - 1));
+        return palabras[INDICEALEATORIO].toUpperCase();
+    }
+    function handleError(err) {
+        console.error(err);
+        console.log("La API no responde");
     
-    let palabra_error = ["Perro", "Burro", "Apple", "Gatos"];
-    const palabraSeleccionada = obtenerPalabraSeleccionada(palabra_error);
-    console.log("Palabra seleccionada:", palabraSeleccionada);
-
-    function intentarSegundaOpcion() {
-        if (intentos < 6) {
-            const ROW = document.createElement('div');
-            ROW.className = 'row';
-            
-            const INTENTO = leerIntento();
-            console.log("Intento:", INTENTO);
-
-            if (palabraSeleccionada.toUpperCase() === INTENTO.toUpperCase()) {
-                terminar("<h1>GANASTE!</h1>");
-                return;
+        let palabra_error = ["Lugar", "Hogar", "Horno", "Ducha"];
+        const PALABRASELECCIONADA = obtenerPalabraSeleccionada(palabra_error);
+        console.log("Palabra seleccionada:", PALABRASELECCIONADA);
+    
+        function intentarSegundaOpcion() {
+            if (intentos < 6) {
+                const ROW = document.createElement('div');
+                ROW.className = 'row';
+    
+                const INTENTO = leerIntento();
+                console.log("Intento:", INTENTO);
+    
+                if (PALABRASELECCIONADA.toUpperCase() === INTENTO.toUpperCase()) {
+                    terminar("<h1> GANASTE!</h1>");
+                    return;
+                } else {
+                    mostrarIntento(ROW, INTENTO, PALABRASELECCIONADA);
+                }
+    
+                intentos++;
+                console.log("intento numero: ", intentos);
             } else {
-                mostrarIntento(ROW, INTENTO, palabraSeleccionada);
+                console.log("Has alcanzado el límite de 5 intentos");
+                terminar("<h1> PERDISTE!</h1>");
             }
-
-            intentos++;
-            console.log("intento numero: ", intentos);
-        } else {
-            console.log("Has alcanzado el límite de 5 intentos");
-            terminar("<h1>PERDISTE!</h1>");
         }
+    
+        button.addEventListener("click", intentarSegundaOpcion);
     }
-
-    button.addEventListener("click", intentarSegundaOpcion);
-}
-
-function obtenerPalabraSeleccionada(palabras) {
-    const indiceAleatorio = Math.round(Math.random() * (palabras.length - 1));
-    return palabras[indiceAleatorio].toUpperCase();
-}
-
-//rowElement respresenta un elemento html de tipo div y contiene las letras generadas durante el intento del jugador
-//rowElement es un contenedor que se llena con elementos span para mostrar el intento del jugador en la interfaz del juego.
-function mostrarIntento(rowElement, intento, palabraSeleccionada) {
-    for (let i in palabraSeleccionada) {
-        const SPAN = document.createElement('span');
-        SPAN.className = 'letter';
-
-        if (intento[i] === palabraSeleccionada[i]) {
-            console.log(intento[i], "verde");
-            SPAN.innerHTML = intento[i];
-            SPAN.style.backgroundColor = "green";
-        } else if (palabraSeleccionada.includes(intento[i])) {
-            console.log(intento[i], "amarillo");
-            SPAN.innerHTML = intento[i];
-            SPAN.style.backgroundColor = "yellow";
-        } else {
-            console.log(intento[i], "Gris");
-            SPAN.innerHTML = intento[i];
-            SPAN.style.backgroundColor = "gray";
+    
+    function mostrarIntento(rowElement, intento, PALABRASELECCIONADA) {
+        let posicionesCorrectasUtilizadas = []; // Almacena las posiciones correctas ya utilizadas
+        let posicionesIncorrectasUtilizadas = []; // Almacena las posiciones incorrectas ya utilizadas
+    
+        for (let i = 0; i < PALABRASELECCIONADA.length; i++) {
+            const SPAN = document.createElement('span');
+            SPAN.className = 'letter';
+    
+            if (intento[i] === PALABRASELECCIONADA[i] && !posicionesCorrectasUtilizadas.includes(i)) {
+                console.log(intento[i], "verde");
+                SPAN.innerHTML = intento[i];
+                SPAN.style.backgroundColor = "green";
+                posicionesCorrectasUtilizadas.push(i); // Almacena la posición correcta utilizada
+            } else if (PALABRASELECCIONADA.includes(intento[i]) && !posicionesCorrectasUtilizadas.includes(PALABRASELECCIONADA.indexOf(intento[i])) && !posicionesIncorrectasUtilizadas.includes(PALABRASELECCIONADA.indexOf(intento[i]))) {
+                console.log(intento[i], "amarillo");
+                SPAN.innerHTML = intento[i];
+                SPAN.style.backgroundColor = "yellow";
+                posicionesIncorrectasUtilizadas.push(PALABRASELECCIONADA.indexOf(intento[i])); // Almacena la posición incorrecta utilizada
+            } else {
+                console.log(intento[i], "gris");
+                SPAN.innerHTML = intento[i];
+                SPAN.style.backgroundColor = "gray";
+            }
+    
+            rowElement.appendChild(SPAN);
         }
-
-        rowElement.appendChild(SPAN);
+    
+        rowElement.style.textAlign = "center";
+        GRID.appendChild(rowElement);
     }
-
-    rowElement.style.textAlign = "center";
-    GRID.appendChild(rowElement);
-}
-
+    
 
 function intentar() {
     if (intentos < 6) {
         const ROW = document.createElement('div');
         ROW.className = 'row';
-    
+
         let intento = leerIntento();
-        
+        let posicionesCorrectasUtilizadas = []; // Almacena las posiciones correctas ya utilizadas
+
         console.log("Intento:", intento);
         if (palabra.toUpperCase() === intento.toUpperCase()) {
-            terminar("<h1>GANASTE!</h1>");
+            terminar("<h1> GANASTE!</h1>");
             return;
         } else {
-         
-            for (let i in palabra) {
-               const LETRAINTENTO = intento[i];
-               let SPAN;
-               
-               console.log(palabra[i]);
-               if (LETRAINTENTO === palabra[i]) {
-                   console.log(LETRAINTENTO, "verde");
-                   SPAN = crearSpan(LETRAINTENTO, "green");
-               } else if (palabra.includes(LETRAINTENTO)) {
-                   console.log(LETRAINTENTO, "amarillo");
-                   SPAN = crearSpan(LETRAINTENTO, "yellow");
-               } else {
-                   console.log(LETRAINTENTO, "Gris");
-                   SPAN = crearSpan(LETRAINTENTO, "gray");
-               }
+            for (let i = 0; i < palabra.length; i++) {
+                const LETRA_INTENTO = intento[i];
+                let SPAN;
+                const POSICIONES_DE_LETRA = obtenerPosiciones(palabra, LETRA_INTENTO);
+
+                console.log(palabra[i]);
+                if (LETRA_INTENTO === palabra[i] && !posicionesCorrectasUtilizadas.includes(i)) {
+                    console.log(LETRA_INTENTO, "verde");
+                    SPAN = crearSpan(LETRA_INTENTO, "green");
+                    posicionesCorrectasUtilizadas.push(i); // Almacena la posición correcta utilizada
+                } else if (palabra.includes(LETRA_INTENTO) && POSICIONES_DE_LETRA.length > 0 && !posicionesCorrectasUtilizadas.includes(POSICIONES_DE_LETRA[0])) {
+                    console.log(LETRA_INTENTO, "amarillo");
+                    SPAN = crearSpan(LETRA_INTENTO, "yellow");
+                    posicionesCorrectasUtilizadas.push(POSICIONES_DE_LETRA[0]); // Almacena la posición correcta utilizada
+                } else {
+                    console.log(LETRA_INTENTO, "gris");
+                    SPAN = crearSpan(LETRA_INTENTO, "gray");
+                }
+
                 ROW.appendChild(SPAN);
             }
             ROW.style.textAlign = "center";
@@ -120,11 +126,24 @@ function intentar() {
         }
 
         intentos++;
-        console.log("intento numero: ",intentos);
+        console.log("Intento número:", intentos);
     } else {
-        console.log("Has alcanzado el limite de 5 intentos");
-        terminar("<h1>PERDISTE!</h1>");
+        console.log("Has alcanzado el límite de 5 intentos");
+        terminar("<h1> PERDISTE!</h1>");
     }
+}
+
+
+function obtenerPosiciones(palabra, letra) {
+    const posiciones = [];
+    for (let i = 0; i < palabra.length; i++) {
+        if (palabra[i] === letra) {
+            posiciones.push(i); // No convertir a cadena
+        }
+    }
+    return posiciones;
+}
+
 
     function crearSpan(letra, color) {
         const SPAN = document.createElement('span');
@@ -134,7 +153,10 @@ function intentar() {
         return SPAN;
     }
 
-}
+
+
+
+
 
 button.addEventListener("click", intentar);
 RECARGAR.addEventListener("click",reload);
