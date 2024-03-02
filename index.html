@@ -2,7 +2,8 @@
 <html>
   <head>
     <title>Wordle PPY</title>
-        <link rel="stylesheet" href="style.css">
+       <meta name="viewport" content="width=device-width, initial-scale=1"> 
+       <link rel="stylesheet" href="style.css">
        <script src="script.js" defer></script>
   </head>
   <body>
@@ -15,9 +16,17 @@
     </div>
     <div id="Instruccion">
       <h1> Instrucciones</h1>
-      <h2> La casilla en verde indica que coincide la letra y posición de la palabra</h2>
-      <h2> La casilla en amarilla indica que la letra existe pero no en otra posición</h2>
-      <h2> La casilla en gris indica que la letra no existe</h2>
+        <div id="lista">
+          <ul>
+            <li>La casilla en verde indica que coincide la letra y posición de la palabra</li>
+            <li>La casilla en amarilla indica que la letra existe pero no en otra posición</li>
+            <li>La casilla en gris indica que la letra no existe</li>
+            <li>No es posible ingresar menos o más de 5 letras</li>
+            <li>No es posbile ingresar números</li>
+            <li>No es posible intentar adivinar palabras vacias (sin letras)</li>
+            <li>En caso de que la api no responda, jugaras con una lista de palabras previamente cargada</li>
+          </ul>
+      </div>
     </div>
     <p id="guesses">
   </body>

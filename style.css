@@ -1,84 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
 body {
-    font-family: Arial, sans-serif;
-  }
-     
-  h1 {
+    background: #bbb1c6; 
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+h1 {
     text-align: center;
     margin-top: 50px;
-  }
-     
-  #guess-input {
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#guess-input {
     display: block;
     margin: 0 auto 20px;
     padding: 10px;
     font-size: 18px;
     width: 250px;
     border: 1px solid #ccc;
-  }
-     
-  #guess-button,#reload {
-    display: block;
-    margin: 0 auto;
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #0CBABA;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-  }
+}
 
-  #reload {
+#guess-button, #reload {
     display: block;
-    margin-top: 10px;
+    margin: 0 auto 10px;
     padding: 10px 20px;
     font-size: 18px;
     background-color: #0CBABA;
     color: #fff;
     border: none;
     border-radius: 3px;
-  }
-    
-     
-  button:active {
-      transform: scale(0.95);
-  }
-     
-  .letter {
-      border: 1px solid black;
-      padding: 3px;
-      margin: 3px;
-      min-width: 20px;
-      text-align: center;
-      display: inline-block
-  }
-     
-  .row{
-      margin-bottom: 10px;
-  }
-     
-  .input-area{
-      margin: 30px;
-  }
-  #grid{
+    transition: transform 0.3s ease; /* Añadido efecto de transición */
+}
+
+#guess-button:active, #reload:active {
+    transform: scale(0.95);
+}
+
+.letter {
+    border: 1px solid black;
+    padding: 3px;
+    margin: 3px;
+    min-width: 20px;
+    text-align: center;
+    display: inline-block;
+}
+
+.row {
+    margin-bottom: 10px;
+}
+
+.input-area {
+    margin: 30px;
+}
+
+#grid {
     margin-top: 30px;
-  }
-  #Instruccion {
+}
+
+#Instruccion {
     width: 60%;
-    margin: 50px auto; /* Añadido margen superior para separar del resto del contenido */
-    background-color: #f5f5f5; /* Utilizando un tono más claro */
+    margin: 50px auto; 
+    background-color: #f5f5f5;
     padding: 20px;
     text-align: center;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras más prominentes */
-  }
-  
-  h1 {
-    color: #333; /* Color de texto más oscuro */
-  }
-  
-  h2 {
-    color: #555; /* Color de texto un poco más oscuro */
-    margin-bottom: 15px; /* Añadido espacio entre los subtítulos */
-  }
-  
- 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+#lista {
+    color: #3E363F;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    #lista {
+        width: 90%;
+    }
+}
+
+.letter{
+  border: 1px solid rgb(241, 249, 255);
+  padding: 10px;
+  margin: 5px;
+  min-width: 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 18px;
+}
+
+
