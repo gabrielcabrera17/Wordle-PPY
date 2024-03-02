@@ -2,32 +2,34 @@
 <html>
   <head>
     <title>Wordle PPY</title>
-       <meta name="viewport" content="width=device-width, initial-scale=1"> 
+       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> 
        <link rel="stylesheet" href="style.css">
        <script src="script.js" defer></script>
   </head>
   <body>
-    <h1>Wordle PPY</h1>
-    <input type="text" id="guess-input" >
-    <button id="guess-button">Adivinar</button>
-    <button id="reload">Recargar</button>
-    <div id="grid">
+    <div class="contenedor">
+      <h1>Wordle PPY</h1>
+      <input type="text" id="guess-input" >
+      <button id="guess-button">Adivinar</button>
+      <button id="reload">Recargar</button>
+      <div id="grid">
 
-    </div>
-    <div id="Instruccion">
-      <h1> Instrucciones</h1>
-        <div id="lista">
-          <ul>
-            <li>La casilla en verde indica que coincide la letra y posición de la palabra</li>
-            <li>La casilla en amarilla indica que la letra existe pero no en otra posición</li>
-            <li>La casilla en gris indica que la letra no existe</li>
-            <li>No es posible ingresar menos o más de 5 letras</li>
-            <li>No es posbile ingresar números</li>
-            <li>No es posible intentar adivinar palabras vacias (sin letras)</li>
-            <li>En caso de que la api no responda, jugaras con una lista de palabras previamente cargada</li>
-          </ul>
       </div>
+      <div id="Instruccion">
+        <h1> Instrucciones</h1>
+          <div id="lista">
+            <ul>
+              <li>La casilla en verde indica que coincide la letra y posición de la palabra</li>
+              <li>La casilla en amarilla indica que la letra existe pero no en otra posición</li>
+              <li>La casilla en gris indica que la letra no existe</li>
+              <li>No es posible ingresar menos o más de 5 letras</li>
+              <li>No es posbile ingresar números</li>
+              <li>No es posible intentar adivinar palabras vacias (sin letras)</li>
+              <li>En caso de que la api no responda, jugaras con una lista de palabras previamente cargada</li>
+            </ul>
+        </div>
+      </div>
+      <p id="guesses">
     </div>
-    <p id="guesses">
   </body>
 </html>
