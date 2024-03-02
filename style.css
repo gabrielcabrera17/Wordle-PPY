@@ -71,17 +71,14 @@ h1 {
 }
 
 #lista {
-    color: #3E363F;
-    width: 70%;
-    margin: -5% ;
-    background-color: #f4f4f4;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-  
-
+  color: #3E363F;
+  width: 70%;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
 }
-
 
 #lista li {
   font-size: 16px;
@@ -90,16 +87,29 @@ h1 {
 
 @media (max-width: 600px) {
   #lista {
-    width: 90%;
+      width: 90%;
   }
 
   #lista li {
-    font-size: 14px;
+      font-size: 14px;
+  }
+}
+
+@media (max-width: 355px) {
+  #lista {
+      width: 50%;
+      padding: 5px;
+      margin: 0 auto;
+      border: 1px solid red; /* Añadido para visualizar el área del contenedor */
+  }
+
+  #lista li {
+      font-size: 20px;
   }
 }
 
 
-.letter{
+.letter {
   border: 1px solid rgb(241, 249, 255);
   padding: 10px;
   margin: 5px;
@@ -108,4 +118,3 @@ h1 {
   display: inline-block;
   font-size: 18px;
 }
-
