@@ -73,11 +73,12 @@ h1 {
 #lista {
     color: #3E363F;
     width: 70%;
-    margin: 0 auto;
+    margin: -5% ;
     background-color: #f4f4f4;
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 15px;
+  
 
 }
 
