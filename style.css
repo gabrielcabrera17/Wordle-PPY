@@ -72,19 +72,31 @@ h1 {
 
 #lista {
     color: #3E363F;
-    width: 90%;
+    width: 70%;
     margin: 0 auto;
     background-color: #f4f4f4;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
+
+}
+
+
+#lista li {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 600px) {
-    #lista {
-        width: 90%;
-    }
+  #lista {
+    width: 90%;
+  }
+
+  #lista li {
+    font-size: 14px;
+  }
 }
+
 
 .letter{
   border: 1px solid rgb(241, 249, 255);
@@ -95,5 +107,4 @@ h1 {
   display: inline-block;
   font-size: 18px;
 }
-
 
