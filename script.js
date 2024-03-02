@@ -132,7 +132,7 @@ function intentar() {
         intentos++;
         console.log("Intento número:", intentos);
     } else {
-        console.log("Has alcanzado el límite de 5 intentos");
+        console.log("Has alcanzado el límite de 6 intentos");
         terminar("<h1> PERDISTE!</h1>");
     }
 
